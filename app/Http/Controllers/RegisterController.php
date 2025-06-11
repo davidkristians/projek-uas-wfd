@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -13,12 +15,18 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        // Logika untuk memproses registrasi (validasi, simpan ke database, dll.)
         $validatedData = $request->validate([
+            'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-        // Simpan ke database, misalnya dengan model User
-        return redirect('/login')->with('success', 'Registration successful!');
+
+        User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+        ]);
+
+        return redirect('/login')->with('success', 'Registration Successful!');
     }
 }

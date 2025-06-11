@@ -22,7 +22,7 @@ Route::get('/register', [RegisterController::class, 'registerForm'])->name('regi
 Route::post('/register', [RegisterController::class, 'register']);
 
 // Logout
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard: redirect berdasarkan role
 Route::get('/dashboard', function () {

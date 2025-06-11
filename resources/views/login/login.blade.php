@@ -28,6 +28,12 @@
                 <h1 class="text-2xl font-bold text-gray-800">VroomWash</h1>
             </div>
 
+            @if (session('success'))
+                <div class="alert alert-success text-sm text-green-700 bg-green-100 border border-green-300 p-2 rounded mb-4 text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="text-center mb-6">
                 <button class="w-full bg-white border border-gray-300 text-gray-700 py-2 rounded-lg flex items-center justify-center hover:bg-gray-50">
                     <img src="{{ asset('google.png') }}" alt="Google" class="w-5 h-5 mr-2">
