@@ -36,16 +36,17 @@
                 <p class="text-gray-500 mt-4">or</p>
             </div>
 
-            <form class="space-y-4">
+            <form method="POST" action="{{ route('login') }}" class="space-y-4">
+                @csrf
                 <!-- email -->
                 <div>
                     <p class="mb-1 text-gray-700 text-xs font-semibold">Email</p>
-                    <input type="email" placeholder="Email Address" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input name="email" type="email" placeholder="Email Address" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <!-- password -->
                 <div>
                     <p class="mb-1 text-gray-700 text-xs font-semibold">Password</p>
-                    <input type="password" placeholder="Password" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input name="password" type="password" placeholder="Password" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 
                 <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Continue</button>
