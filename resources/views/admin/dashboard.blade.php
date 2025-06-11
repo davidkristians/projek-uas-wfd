@@ -8,12 +8,31 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
-<body>
-    <h1>Selamat datang Admin!</h1>
+
+<body class="bg-blue-800 font-sans">
     <form method="POST" action="{{ route('logout') }}" id="logout-form">
         @csrf
-        <button type="button" class="btn btn-danger" onclick="confirmLogout()">Logout</button>
+        <!-- Tombol logout dalam bentuk link dengan gambar di samping -->
+        <a href="#" onclick="confirmLogout()" class="d-inline-flex align-items-center text-white text-decoration-none">
+            <img src="{{ asset('logout.png') }}" alt="Logout Icon" width="20" height="20" class="me-2">
+            Logout
+        </a>
     </form>
+
+    <form action="{{ route('data') }}" method="GET" id="data-form">
+        <a href="#" onclick="document.getElementById('data-form').submit();"class="d-inline-flex align-items-center text-white text-decoration-none">
+            <img src="{{ asset('data_icon.png') }}" alt="Logout Icon" width="20" height="20" class="me-2">
+            Data
+        </a>
+    </form>
+    <form action="{{ route('data') }}">
+        <a href="#"class="d-inline-flex align-items-center text-white text-decoration-none">
+            <img src="{{ asset('plus.png') }}" alt="Logout Icon" width="20" height="20" class="me-2">
+            Tambah Karyawan
+        </a>
+    </form>
+
+            
 
 
     <script>

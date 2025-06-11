@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DataController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -51,3 +52,6 @@ Route::get('/user/dashboard', function () {
 Route::get('/karyawan/dashboard', function () {
     return view('karyawan.dashboard');
 })->middleware('auth');
+
+// Show Data
+Route::get('/data', [DataController::class, 'dataForm'])->name('data');
