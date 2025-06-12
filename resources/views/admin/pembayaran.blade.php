@@ -13,25 +13,10 @@
 
     @include('include.navbar_admin')
     <div class="text-center justify-center items-center flex-grow flex flex-col mt-8">
-        <h1 class="mb-10 text-4xl fw-bold">Data Management</h1>
-        <h2 class="mb-6 text-xl">Filter & Pilih Data Yang Ingin Anda Tamplikan</h2>
-        <div class="flex space-x-4">
-            <select class="p-2 rounded bg-gray-200 text-black font-semibold focus:outline-none" id="dataType">
-                <option value="" disabled selected>Pilih Data</option>
-                <option value="karyawan">Karyawan</option>
-                <option value="admin">Admin</option>
-                <option value="pengguna">Pengguna</option>
-            </select>
-            <select class="p-2 rounded bg-gray-200 text-black font-semibold focus:outline-none" id="sortOrder">
-                <option value="" disabled selected>Pilih Filter</option>
-                <option value="ascending">Ascending</option>
-                <option value="descending">Descending</option>
-            </select>
-            <button class="p-2 bg-blue-500 rounded hover:bg-blue-300" onclick="showData()">Show Data</button>
-        </div>  
-    </div>
+        <h1 class="mb-10 text-4xl fw-bold">Pembayaran</h1>
+        
 
-    </body>
+</body>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

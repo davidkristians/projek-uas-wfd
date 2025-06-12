@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\PembayaranController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LoginController;
@@ -55,5 +59,13 @@ Route::get('/karyawan/dashboard', function () {
 
 // Show Data
 Route::get('/data', [DataController::class, 'dataForm'])->name('data');
+// Jadwal Kerja
+Route::get('/jadwal_kerja', [JadwalController::class, 'jadwalForm'])->name('jadwal_kerja');
+// Layanan
+Route::get('/layanan', [LayananController::class, 'layananForm'])->name('layanan');
 // Tambah Karyawan
 Route::get('/tambahkaryawan', [RegisterController::class, 'registerKaryawan'])->name('tambah_karyawan');
+// Tambah Karyawan
+Route::get('/pembayaran', [PembayaranController::class, 'pembayaranForm'])->name('pembayaran');
+// Laporan
+Route::get('/laporan', [LaporanController::class, 'laporanForm'])->name('laporan');
