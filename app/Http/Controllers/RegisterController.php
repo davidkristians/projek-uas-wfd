@@ -29,4 +29,9 @@ class RegisterController extends Controller
 
         return redirect('/login')->with('success', 'Registration Successful!');
     }
+
+    public function registerKaryawan()
+    {
+        return view('admin.tambah_karyawan');
+    }
 }

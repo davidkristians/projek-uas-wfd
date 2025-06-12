@@ -23,7 +23,7 @@ Route::get('/register', [RegisterController::class, 'registerForm'])->name('regi
 Route::post('/register', [RegisterController::class, 'register']);
 
 // Logout
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard: redirect berdasarkan role
 Route::get('/dashboard', function () {
@@ -55,3 +55,5 @@ Route::get('/karyawan/dashboard', function () {
 
 // Show Data
 Route::get('/data', [DataController::class, 'dataForm'])->name('data');
+// Tambah Karyawan
+Route::get('/tambahkaryawan', [RegisterController::class, 'registerKaryawan'])->name('tambah_karyawan');

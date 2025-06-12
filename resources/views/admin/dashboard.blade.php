@@ -10,38 +10,38 @@
 </head>
 
 <body class="bg-blue-800 font-sans">
-    <form method="POST" action="{{ route('logout') }}" id="logout-form">
-        @csrf
-        <!-- Tombol logout dalam bentuk link dengan gambar di samping -->
-        <a href="#" onclick="confirmLogout()" class="d-inline-flex align-items-center text-white text-decoration-none">
-            <img src="{{ asset('logout.png') }}" alt="Logout Icon" width="20" height="20" class="me-2">
-            Logout
-        </a>
-    </form>
 
-    <form action="{{ route('data') }}" method="GET" id="data-form">
-        <a href="#" onclick="document.getElementById('data-form').submit();"class="d-inline-flex align-items-center text-white text-decoration-none">
-            <img src="{{ asset('data_icon.png') }}" alt="Logout Icon" width="20" height="20" class="me-2">
-            Data
-        </a>
-    </form>
-    <form action="{{ route('data') }}">
-        <a href="#"class="d-inline-flex align-items-center text-white text-decoration-none">
-            <img src="{{ asset('plus.png') }}" alt="Logout Icon" width="20" height="20" class="me-2">
-            Tambah Karyawan
-        </a>
-    </form>
-
-            
+    @include('include.navbar_admin')    
 
 
     <script>
-        function confirmLogout() {
-            if (confirm("Are You Sure Want to Logout?")) {
-                document.getElementById('logout-form').submit();
-            }
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.getElementById("hamburger-btn");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+
+        btn.addEventListener("click", () => {
+            sidebar.classList.remove("-translate-x-full");
+            overlay.classList.remove("hidden");
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.add("-translate-x-full");
+            overlay.classList.add("hidden");
+        });
+    });
     </script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebar.classList.toggle('translate-x-0');
+        });
+    </script>
+    
+
 
 </body>
 </html>
