@@ -22,11 +22,11 @@ class LoginController extends Controller
             // Arahkan ke dashboard sesuai role
             switch ($user->role) {
                 case 'admin':
-                    return redirect('/admin/dashboard');
+                    return redirect('/base/dashboard_admin');
                 case 'user':
-                    return redirect('/user/dashboard');
+                    return redirect('/base/dashboard_user');
                 case 'karyawan':
-                    return redirect('/karyawan/dashboard');
+                    return redirect('/base/dashboard_karyawan');
                 default:
                     return redirect('/home');
             }

@@ -9,11 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Selamat datang Karyawan!</h1>
-    <form method="POST" action="{{ route('logout') }}" id="logout-form">
-        @csrf
-        <button type="button" class="btn btn-danger" onclick="confirmLogout()">Logout</button>
-    </form>
+    <h1>Selamat datang User!</h1>
+    <li>
+        <a href="{{ route('logout') }}" onclick="confirmLogout()" class="flex items-center p-2 hover:bg-teal-700 rounded">
+         <!-- Icon -->
+            <img src="{{ asset('logout.png') }}" alt="Data" class="w-6 h-6 mr-5">
+                Log Out
+        </a>
+    </li>
 
 
     <script>
@@ -23,6 +26,9 @@
             }
         }
     </script>
+
+    
+
 
 </body>
 </html>

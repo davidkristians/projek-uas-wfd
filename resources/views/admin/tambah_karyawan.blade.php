@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VroomWash</title>
-    <link rel="icon" href="{{ asset('icon_vroom.png') }}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-</head>
+@extends('base.dashboard_admin')
 
-<body class="bg-blue-900 text-white">
-
-   @include('include.navbar_admin')
+@section('tambah_karyawan')
     <div class="mt-8">
         <h1 class="mb-8 text-4xl text-center fw-bold">Tambah Karyawan</h1>
         <div class="max-w-4xl mx-auto"> <!-- Membatasi lebar dan memusatkan form -->
-            <form action="#" method="POST" class="bg-blue-800/20 bg-opacity-50 p-6 rounded-lg shadow-lg">
+            <form action="#" method="POST" class="bg-blue-900 bg-opacity-50 p-6 rounded-lg shadow-lg">
                 @csrf
                 <div class="grid grid-cols-2 gap-6">
                     <div>
@@ -54,7 +43,6 @@
             </form>
         </div>
     </div>
-</body>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -82,4 +70,4 @@
             sidebar.classList.toggle('translate-x-0');
         });
     </script>
-</html>
+@endsection

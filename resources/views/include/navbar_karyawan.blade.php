@@ -8,8 +8,8 @@
             </svg>
         </button>
         <!-- Profile -->
-        <img src="{{ asset('atmin.jpg') }}" alt="User Profile" class="w-9 h-9 rounded-full">
-        <span class="mr-2">Hi Admin!</span>
+        <img src="{{ asset('karyawan.jpg') }}" alt="User Profile" class="w-9 h-9 rounded-full">
+        <span class="mr-2">Hi Karyawan!</span>
     </div>
 
     <div class="flex items-center">
@@ -19,7 +19,7 @@
 
      <!-- Sidebar Hamburger Menu -->
     <div id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
-        @include('include.hamburger_admin') <!-- path ke hamburger -->
+        @include('include.hamburger_karyawan') <!-- path ke hamburger -->
     </div>
 
     <!-- Overlay -->

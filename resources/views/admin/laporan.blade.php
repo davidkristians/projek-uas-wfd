@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VroomWash</title>
-    <link rel="icon" href="{{ asset('icon_vroom.png') }}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-</head>
+@extends('base.dashboard_admin')
 
-<body class="bg-blue-900 text-white">
-
-    @include('include.navbar_admin')
+@section('laporan')
     <div class="text-center justify-center items-center flex-grow flex flex-col mt-8">
         <h1 class="mb-10 text-4xl fw-bold">Laporan</h1>
+        <h2 class="mb-6 text-xl">Filter Untuk Menemukan Pelaporan Yang Diinginkan</h2>
         
 
 </body>
@@ -44,4 +34,4 @@
             sidebar.classList.toggle('translate-x-0');
         });
     </script>
-</html>
+@endsection

@@ -1,12 +1,10 @@
-@extends('base.dashboard_admin')
+@extends('base.dashboard_karyawan')
 
-@section('layanan')
-    <div class="text-center justify-center items-center flex-grow flex flex-col mt-8">
-        <h1 class="mb-10 text-4xl fw-bold">Layanan</h1>
-        <h2 class="mb-6 text-xl">Layanan Yang Kita Miliki Saat Ini</h2>
-        
+@section('jadwal_kerja_karyawan')
+<div class="text-center justify-center items-center flex-grow flex flex-col mt-8">
+        <h1 class="mb-10 text-4xl fw-bold">Notifikasi</h1>
+</div>      
 
-</body>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

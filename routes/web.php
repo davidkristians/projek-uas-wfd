@@ -3,7 +3,10 @@
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LoginController;
@@ -45,18 +48,21 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 // Halaman per role
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
+Route::get('/base/dashboard_admin', function () {
+    return view('base.dashboard_admin');
 })->middleware('auth');
 
-Route::get('/user/dashboard', function () {
-    return view('user.dashboard');
+Route::get('/base/dashboard_user', function () {
+    return view('base.dashboard_user');
 })->middleware('auth');
 
-Route::get('/karyawan/dashboard', function () {
-    return view('karyawan.dashboard');
+Route::get('/base/dashboard_karyawan', function () {
+    return view('base.dashboard_karyawan');
 })->middleware('auth');
 
+// 
+// ADMIN
+// 
 // Show Data
 Route::get('/data', [DataController::class, 'dataForm'])->name('data');
 // Jadwal Kerja
@@ -69,3 +75,15 @@ Route::get('/tambahkaryawan', [RegisterController::class, 'registerKaryawan'])->
 Route::get('/pembayaran', [PembayaranController::class, 'pembayaranForm'])->name('pembayaran');
 // Laporan
 Route::get('/laporan', [LaporanController::class, 'laporanForm'])->name('laporan');
+
+// 
+// KARYAWAN
+// 
+// Jadwal Kerja
+Route::get('/jadwal_kerja_karyawan', [JadwalController::class, 'jadwalFormKaryawan'])->name('jadwal_kerja_karyawan');
+// Riwayat
+Route::get('/riwayat_karyawan', [RiwayatController::class, 'riwayatKaryawan'])->name('riwayat_pekerjaan_karyawan');
+// Status
+Route::get('/status_pekerjaan', [StatusController::class, 'statusPekerjaan'])->name('status_pekerjaan');
+// Status
+Route::get('/notifikasi', [NotifikasiController::class, 'notifikasiForm'])->name('notifikasi');

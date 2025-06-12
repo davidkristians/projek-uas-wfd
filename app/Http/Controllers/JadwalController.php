@@ -11,4 +11,9 @@ class JadwalController extends Controller
     {
         return view('admin.jadwal_kerja');
     }
+
+    public function JadwalFormKaryawan()
+    {
+        return view('karyawan.jadwal_kerja_karyawan');
+    }
 }
