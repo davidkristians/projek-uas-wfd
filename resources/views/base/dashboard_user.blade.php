@@ -50,10 +50,10 @@
     <section class="flex w-screen bg-gradient-to-tl from-[#000000]/30 to-[#ffffff]/30 rounded-3xl px-5 py-6 overflow-hidden gap-6">
         <!-- LEFT SECTION WRAP -->
         <div class="flex-wrap w-full">
-            <h1 class="text-5xl text-white font-bold mb-2">Book now</h1>
-            <p class="text-lg text-gray-300 mb-6">Choose Your Car Wash Service</p>
+            <h1 class="text-6xl text-white font-bold ">Book Now</h1>
+            <p class="text-lg text-gray-300 mb-6">Choose Your Car Wash Services</p>
             <!-- 3 CARD BOOKING OPTIONS -->
-            <div class="flex space-x-6 mb-6">
+            <div class="flex space-x-6 mb-3">
                 <div class="bg-gradient-to-tl from-[#3B82F6] to-[#1E3A8A] text-[#1B2845] p-2 rounded-xl w-44 h-44 text-center">
                     <!-- <img src="{{ asset('basicwash.svg') }}" alt="basic" class="h-12 mx-auto mb-2"> -->
                      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="max-height:500px" viewBox="-2.027 -0.55 104.324 100.44" class="mx-auto my-2 fill-white">
@@ -63,7 +63,7 @@
                     <button class="mt-2 bg-cyan-700 text-white px-3 py-1 rounded-full text-sm">Select</button>
                 </div>
 
-                <div class="bg-gradient-to-tl from-[#ffd900] to-[#7a5000] p-2 rounded-xl w-44 h-44 text-center">
+                <div class="bg-gradient-to-tl from-[#af9e00] to-[#744b00] p-2 rounded-xl w-44 h-44 text-center">
                     <!-- <img src="{{ asset('insidewash.svg') }}" alt="inside" class="h-12 mx-auto mb-2"> -->
                      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="max-height:500px" viewBox="-2.027 -0.55 104.324 100.44" class="mx-auto my-2 fill-white">
                         <path d="M56.25 65.625H42.188c-5.07 0-10.277.742-14.961 1.727l-11.883-33a4.662 4.662 0 0 0-1.383-1.985 6.225 6.225 0 0 0 1.664-4.238v-12.5a6.258 6.258 0 0 0-6.25-6.25H4.688A4.691 4.691 0 0 0 0 14.066v15.625c0 1.2.453 2.293 1.196 3.125a4.65 4.65 0 0 0-1.102 4.047l7.785 38.93a5 5 0 0 0-.062.774v3.125a4.69 4.69 0 0 0 3.125 4.418v8.082c0 .863.699 1.562 1.562 1.562h37.5c.864 0 1.563-.699 1.563-1.562v-7.813h4.687a4.691 4.691 0 0 0 4.688-4.687v-9.375a4.691 4.691 0 0 0-4.688-4.688zM3.125 14.063c0-.86.703-1.562 1.563-1.562h4.687a3.13 3.13 0 0 1 3.125 3.125v12.5a3.13 3.13 0 0 1-3.125 3.125H4.687c-.859 0-1.562-.704-1.562-1.563zm7.633 58.148a4.08 4.08 0 0 0-.375.172L3.156 36.242c-.094-.461.024-.934.324-1.297.297-.363.739-.57 1.211-.57h6.25c.657 0 1.25.414 1.47 1.03l11.75 32.642c-7.47 1.812-13.009 4.008-13.399 4.164zm37.68 18.414H14.063v-6.25h34.375zm9.375-10.938c0 .86-.703 1.563-1.563 1.563H12.5c-.86 0-1.562-.704-1.562-1.563v-3.125c0-.64.383-1.21.984-1.453.649-.258 16.062-6.36 30.266-6.36H56.25c.86 0 1.563.704 1.563 1.563zM98.438 48.438h-5.227a7.76 7.76 0 0 0-5.523 2.29l-1.105 1.105-9.641-9.641 7.625-7.625c.883-.883 1.375-2.063 1.375-3.313s-.488-2.43-1.375-3.312a4.664 4.664 0 0 0-3.313-1.375 4.64 4.64 0 0 0-3.312 1.375L56.067 49.817a4.664 4.664 0 0 0-1.375 3.313 4.64 4.64 0 0 0 1.375 3.312 4.664 4.664 0 0 0 3.312 1.375 4.64 4.64 0 0 0 3.313-1.375l7.625-7.625 9.64 9.64-5.792 5.794a7.76 7.76 0 0 0-2.29 5.523v22.414c0 .863.7 1.563 1.563 1.563h25c.863 0 1.562-.7 1.562-1.563V50c0-.863-.699-1.563-1.562-1.563zm-37.957 5.793c-.297.297-.688.457-1.105.457a1.56 1.56 0 0 1-1.563-1.563c0-.417.164-.812.457-1.105l21.875-21.875c.297-.297.688-.457 1.106-.457a1.557 1.557 0 0 1 1.562 1.563c0 .418-.164.812-.457 1.105zm12.043-7.621 2.21-2.211 9.642 9.64-2.211 2.211zm24.352 44.016H75.001V69.774c0-1.25.488-2.43 1.375-3.313l13.523-13.523a4.664 4.664 0 0 1 3.313-1.375h3.664zM50 23.438c0 .863.7 1.563 1.563 1.563a4.691 4.691 0 0 1 4.687 4.687 1.562 1.562 0 1 0 3.125 0A4.691 4.691 0 0 1 64.063 25a1.562 1.562 0 1 0 0-3.125 4.691 4.691 0 0 1-4.688-4.687 1.562 1.562 0 1 0-3.125 0 4.691 4.691 0 0 1-4.688 4.688c-.863 0-1.562.699-1.562 1.562zm7.813-1.566a7.935 7.935 0 0 0 1.566 1.566 7.935 7.935 0 0 0-1.566 1.566 7.935 7.935 0 0 0-1.567-1.566 7.935 7.935 0 0 0 1.566-1.566zM31.25 18.75c4.309 0 7.813 3.504 7.813 7.813a1.562 1.562 0 1 0 3.124 0c0-4.31 3.504-7.813 7.813-7.813a1.562 1.562 0 1 0 0-3.125c-4.309 0-7.813-3.504-7.813-7.813a1.562 1.562 0 1 0-3.124 0c0 4.31-3.504 7.813-7.813 7.813a1.562 1.562 0 1 0 0 3.125zm9.375-5.309a11.052 11.052 0 0 0 3.746 3.746 11.052 11.052 0 0 0-3.746 3.747 11.052 11.052 0 0 0-3.746-3.747 11.052 11.052 0 0 0 3.746-3.746z"/></svg>
@@ -86,7 +86,7 @@
             <!-- DATE & LOCATIONS SECTION -->
             <div class="mb-2">
                 <label class="block text-sm text-white mb-1">Enter your location</label>
-                <input type="text" placeholder="🔍 Location..." class="w-full p-2 rounded-full text-black" />
+                <input type="text" placeholder="Your Location (ex. Jalan Siwalankerto Blok DX, No. X, RT X/RW X, Wonocolo, Surabaya" class="w-full p-2 rounded-full text-black" />
             </div>
             <div class="mb-4">
                 <label class="block text-sm text-white mb-1">Date & Time</label>
@@ -103,26 +103,26 @@
     <aside class="max-w-[22rem] flex flex-col gap-6">
         <!-- Rewards -->
         <div class="bg-gradient-to-tl from-[#000000]/20 to-[#ffffff]/20 p-6 rounded-3xl">
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-2">
                 <span class="text-xl text-white font-bold">Daily Rewards</span>
                 <span class="text-2xl">👥</span>
             </div>
             <p class="text-sm text-gray-300 mb-2">Free Voucher</p>
             <div class="bg-white text-[#1B2845] p-3 rounded-xl flex justify-between items-center">
                 <span>
-                    <span class="text-cyan-700 font-bold block">$10 Voucher</span>
+                    <span class="text-lg text-cyan-700 font-bold block">$10 Voucher</span>
                     <small class="text-xs text-gray-600">min. spend $25</small>
                 </span>
-            <button class="bg-cyan-700 text-white px-3 py-1 rounded-full text-sm">Claim</button>
+            <button class="bg-cyan-700 transform hover:bg-sky-400 text-white px-3 py-1 rounded-full text-sm">Claim</button>
             </div>
         </div>
 
       <!-- What's New -->
       <div class="bg-gradient-to-tl from-[#000000]/20 to-[#ffffff]/20 p-6 rounded-3xl">
-        <h2 class="text-xl text-white font-bold mb-4">What’s New?</h2>
+        <h2 class="text-xl text-white font-bold mb-2">What’s New?</h2>
         <img src="{{ asset('dj-khaled.jpg') }}" alt="news" class="rounded-xl mb-2 w-screen h-16 object-[0%_10%] object-cover">
         <p class="text-sm text-gray-300 leading-tight break-words">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima harum nam aspernatur sapiente? Odio, labore! Enim, soluta?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam est dignissimos iusto fugit dolor adipisci illo in ducimus quaerat fugiat rerum quibusdam cumque voluptas vero facilis, earum repellat magnam quam quidem veniam animi sequi molestias voluptatum! At deserunt in atque.
         </p>
       </div>
     </aside>
