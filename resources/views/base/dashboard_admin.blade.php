@@ -9,16 +9,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
-<body class="bg-gradient-to-r from-[#0f1c2e] via-[#0e2a45] to-[#07192a] font-[Poppins]">
-    @include('include.navbar_admin')   
 
-    <!-- WELCOMING ADMIN -->
-    @if (Request::is('base/dashboard_admin') || Request::is('/'))
-    <div class="min-h-[calc(90vh-4rem)] flex items-center justify-center bg-gradient-to-r from-[#0f1c2e] via-[#0e2a45] to-[#07192a]">
-        <h1 class="text-white text-4xl md:text-6xl font-extrabold">
-            Selamat datang di Dashboard Admin,<br>Nama_Admin!
-        </h1>
-    </div>
+<body class="bg-blue-800 font-sans">
+
+    @include('include.navbar_admin') 
+    
+    <!-- Notif Success -->
+    @if (session('success'))
+        <div class="bg-green-500 text-white px-4 py-3 relative mb-4 text-center justify-center">
+            {{ session('success') }}
+        </div>
+
+
     @endif
 
     

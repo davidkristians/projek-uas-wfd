@@ -35,13 +35,40 @@ return [
     |
     */
 
-    'guards' => [
+   'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins', // <- HARUS ADA DI PROVIDERS
+        ],
+
+        'karyawan' => [
+            'driver' => 'session',
+            'provider' => 'karyawans', // <- HARUS ADA DI PROVIDERS
+        ],
     ],
 
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
+        'karyawans' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Karyawan::class,
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -59,17 +86,20 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-    ],
+    // 'providers' => [
+    //     'users' => [
+    //         'driver' => 'eloquent',
+    //         'model' => App\Models\User::class,
+    //     ],
+    //     'admins' => [
+    //         'driver' => 'eloquent',
+    //         'model' => App\Models\Admin::class,
+    //     ],
+    //     'karyawans' => [
+    //         'driver' => 'eloquent',
+    //         'model' => App\Models\Karyawan::class,
+    //     ],
+    // ],
 
     /*
     |--------------------------------------------------------------------------
