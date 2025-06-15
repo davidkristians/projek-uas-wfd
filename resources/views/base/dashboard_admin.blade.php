@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
+
 <body class="bg-blue-800 font-sans">
 
     @include('include.navbar_admin') 
@@ -18,6 +19,8 @@
         <div class="bg-green-500 text-white px-4 py-3 relative mb-4 text-center justify-center">
             {{ session('success') }}
         </div>
+
+
     @endif
 
     
@@ -29,9 +32,6 @@
         @yield('data')
         @yield('pembayaran')
     </main>
-
-    
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -60,7 +60,6 @@
             sidebar.classList.toggle('translate-x-0');
         });
     </script>
-    
 
 
 </body>

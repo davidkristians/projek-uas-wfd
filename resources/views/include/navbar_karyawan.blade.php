@@ -18,7 +18,7 @@
     </div>
 
      <!-- Sidebar Hamburger Menu -->
-    <div id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
+    <div id="sidebar" class="fixed top-0 left-0 w-70 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
         @include('include.hamburger_karyawan') <!-- path ke hamburger -->
     </div>
 
