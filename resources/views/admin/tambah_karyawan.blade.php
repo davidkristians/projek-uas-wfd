@@ -4,7 +4,7 @@
     <div class="mt-8">
         <h1 class="mb-8 text-4xl text-center fw-bold">Tambah Karyawan</h1>
         <div class="max-w-4xl mx-auto"> <!-- Membatasi lebar dan memusatkan form -->
-            <form action="#" method="POST" class="bg-blue-900 bg-opacity-50 p-6 rounded-lg shadow-lg">
+            <form action="{{ route('simpan_karyawan') }}" method="POST" class="bg-blue-900 bg-opacity-50 p-6 rounded-lg shadow-lg">
                 @csrf
                 <div class="grid grid-cols-2 gap-6">
                     <div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="flex justify-end mt-6 space-x-4">
                     <button type="submit" class="px-4 py-2 bg-teal-500 rounded hover:bg-teal-600">Tambah</button>
-                    <a href="#" class="px-4 py-2 bg-teal-500 rounded hover:bg-teal-600 text-center inline-block">Show Data Karyawan</a>
+                    <a href="{{ route('show_karyawan')}}" class="px-4 py-2 bg-teal-500 rounded hover:bg-teal-600 text-center inline-block">Show Data Karyawan</a>
                 </div>
             </form>
         </div>

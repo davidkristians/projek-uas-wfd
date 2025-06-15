@@ -11,7 +11,15 @@
 
 <body class="bg-blue-800 font-sans">
 
-    @include('include.navbar_admin')   
+    @include('include.navbar_admin') 
+    
+    <!-- Notif Success -->
+    @if (session('success'))
+        <div class="bg-green-500 text-white px-4 py-3 relative mb-4 text-center justify-center">
+            {{ session('success') }}
+        </div>
+    @endif
+
     
     <main class="text-white">
         @yield('tambah_karyawan')

@@ -2,7 +2,7 @@
 
 @section('data')
     <div class="text-center justify-center items-center flex-grow flex flex-col mt-8">
-        <h1 class="mb-10 text-4xl fw-bold">Data Management</h1>
+        <h1 class="mb-10 text-4xl fw-bold">Data</h1>
         <h2 class="mb-6 text-xl">Filter & Pilih Data Yang Ingin Anda Tamplikan</h2>
         <div class="flex space-x-4">
             <select class="p-2 rounded bg-gray-200 text-black font-semibold focus:outline-none" id="dataType">

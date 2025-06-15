@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Admin;
+use App\Models\Karyawan;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -15,36 +19,43 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            $user = Auth::user();
 
-            // Arahkan ke dashboard sesuai role
-            switch ($user->role) {
-                case 'admin':
-                    return redirect('/base/dashboard_admin');
-                case 'user':
-                    return redirect('/base/dashboard_user');
-                case 'karyawan':
-                    return redirect('/base/dashboard_karyawan');
-                default:
-                    return redirect('/home');
-            }
+            // Cek di admin
+        if (Auth::guard('admin')->attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect('/base/dashboard_admin');
+        }
+
+        elseif (Auth::guard('karyawan')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/base/dashboard_karyawan');
+        }
+
+        elseif (Auth::guard('web')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/base/dashboard_user');
         }
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ]);
+
     }
 
     public function logout(Request $request)
-{
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
+    {
+        if (Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        } elseif (Auth::guard('karyawan')->check()) {
+            Auth::guard('karyawan')->logout();
+        } else {
+            Auth::logout(); // default web
+        }
 
-    // Tambahkan pesan sukses logout
-    return redirect('/');
-}
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 
 }
