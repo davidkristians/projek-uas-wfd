@@ -7,9 +7,17 @@
     <link rel="icon" href="{{ asset('icon_vroom.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+<style>
+    body,html {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
 
-<body class="bg-gray-800 font-sans">
+<body class="bg-gray-800">
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-gray-900 text-white p-4 flex justify-between items-center">
         <!-- Icon dan Brand -->
@@ -29,7 +37,7 @@
     </nav>
 
     <!-- Header & Isinya-->
-    <header class="pt-24 relative bg-cover bg-center h-screen" id="home" style="background-image: url('{{ asset('bg_homepage.jpg') }}');">
+    <header class="pt-36 relative bg-cover bg-center h-screen" id="home" style="background-image: url('{{ asset('bg_homepage.jpg') }}');">
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="relative z-10 flex items-start justify-center h-full text-center text-white px-6 pt-20">
             <div>
