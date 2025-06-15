@@ -10,7 +10,7 @@
 </head>
 
 
-<body class="bg-blue-800 font-sans">
+<body class="bg-gradient-to-r from-[#0f1c2e] via-[#0e2a45] to-[#07192a] font-[Poppins]">
 
     @include('include.navbar_admin') 
     
@@ -19,8 +19,14 @@
         <div class="bg-green-500 text-white px-4 py-3 relative mb-4 text-center justify-center">
             {{ session('success') }}
         </div>
+    @endif
 
-
+    @if (Request::is('base/dashboard_admin') || Request::is('/'))
+    <div class="min-h-[calc(90vh-4rem)] flex items-center justify-center bg-gradient-to-r from-[#0f1c2e] via-[#0e2a45] to-[#07192a]">
+        <h1 class="text-white text-4xl md:text-6xl font-extrabold">
+            Selamat datang di Dashboard Admin,<br>Nama_Admin!
+        </h1>
+    </div>
     @endif
 
     
