@@ -1,7 +1,7 @@
 @extends('base.dashboard_admin')
 
 @section('layanan')
-<div class="mt-8">
+  <div class="mt-8">
     <h1 class="mb-10 text-4xl text-center fw-bold">Layanan</h1>
     <div class="text-center mb-8">
         <button onclick="showTambahModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
@@ -123,6 +123,20 @@
     }
 
     function closeEditModal() {
+        document.getElementById('modalEdit').classList.add('hidden');
+    }
+</script>
+
+
+    <!-- JS HAMBURGER Menu  -->
+
+        document.getElementById('modalEdit').classList.add('hidden');
+    }
+</script>
+
+
+    <!-- JS HAMBURGER Menu  -->
+{
         document.getElementById('modalEdit').classList.add('hidden');
     }
 </script>

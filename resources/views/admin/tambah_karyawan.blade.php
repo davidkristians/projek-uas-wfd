@@ -5,7 +5,7 @@
         <h1 class="mb-8 text-4xl text-center fw-bold">Tambah Karyawan</h1>
 
         <div class="max-w-4xl mx-auto"> <!-- Membatasi lebar dan memusatkan form -->
-            <form action="{{ route('simpan_karyawan') }}" method="POST" class="bg-blue-900 bg-opacity-50 p-6 rounded-lg shadow-lg"
+            <form action="{{ route('simpan_karyawan') }}" method="POST" class="bg-blue-900 bg-opacity-50 p-6 rounded-lg shadow-lg">
                 @csrf
                 <div class="grid grid-cols-2 gap-6">
                     <div>
