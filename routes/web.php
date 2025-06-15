@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\DashboardController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -42,6 +43,7 @@ Route::get('/dashboard', function () {
 
     return redirect('/login');
 });
+
 
 // ==================
 // ADMIN ROUTES
@@ -92,10 +94,7 @@ Route::middleware(['auth:karyawan'])->group(function () {
 // ==================
 // USER ROUTES
 // ==================
-Route::middleware(['auth'])->group(function () {
-    Route::get('/base/dashboard_user', function () {
-        return view('base.dashboard_user');
-    });
+Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
 
     // Tambahkan route lain khusus user biasa jika ada
-});
+// });
