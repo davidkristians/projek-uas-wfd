@@ -33,7 +33,7 @@ class LoginController extends Controller
 
         elseif (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/base/dashboard_user');
+             return redirect()->route('dashboard.user');
         }
 
         return back()->withErrors([
