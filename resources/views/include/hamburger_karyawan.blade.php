@@ -1,6 +1,6 @@
 <div class="flex h-screen">
     <!-- Sidebar -->
-    <div id="sidebar" class="w-64 bg-blue-900 text-white p-8 space-y-8 transition-all duration-300 ease-in-out transform -translate-x-full md:translate-x-0">
+    <div id="sidebar" class="w-70 bg-blue-900 text-white p-8 space-y-8 transition-all duration-300 ease-in-out transform -translate-x-full md:translate-x-0">
             <div class="text-center">
                 <img src="{{asset('karyawan.jpg')}}" alt="Admin" class="rounded-full w-12 h-12 mx-auto">
                 <h5 class="mt-2">Karyawan</h5>
