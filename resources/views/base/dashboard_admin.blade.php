@@ -27,7 +27,7 @@
     @if (Request::is('base/dashboard_admin') || Request::is('/'))
     <div class="min-h-[calc(90vh-4rem)] flex items-center justify-center bg-gradient-to-r from-[#0f1c2e] via-[#0e2a45] to-[#07192a]">
         <h1 class="text-white text-4xl md:text-6xl font-extrabold">
-            Selamat datang di Dashboard Admin,<br>Nama_Admin!
+            Selamat datang di Dashboard Admin,<br>{{ Auth::guard('admin')->user()->nama }}!
         </h1>
     </div>
     @endif

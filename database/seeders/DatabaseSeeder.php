@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         UsersTableSeeder::class,
         AdminsTableSeeder::class,
         KaryawansTableSeeder::class,
+        JadwalSeeder::class,
         ]);
 
         // User::factory()->create([

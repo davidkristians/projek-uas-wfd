@@ -61,6 +61,12 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/jadwal_kerja', [JadwalController::class, 'jadwalForm'])->name('jadwal_kerja');
     
+    // RUTE BARU UNTUK CRUD JADWAL
+    Route::get('/jadwal/create', [JadwalController::class, 'create'])->name('jadwal.create'); // Menampilkan form tambah
+    Route::post('/jadwal', [JadwalController::class, 'store'])->name('jadwal.store'); // Menyimpan data baru
+    Route::get('/jadwal/{jadwal}/edit', [JadwalController::class, 'edit'])->name('jadwal.edit'); // Menampilkan form edit
+    Route::put('/jadwal/{jadwal}', [JadwalController::class, 'update'])->name('jadwal.update'); // Menyimpan perubahan
+    Route::delete('/jadwal/{jadwal}', [JadwalController::class, 'destroy'])->name('jadwal.destroy'); // Menghapus jadwal
     // LAYANAN
     Route::get('/layanan', [LayananController::class, 'layananForm'])->name('layanan');
     // Tambah layanan
@@ -100,11 +106,13 @@ Route::middleware(['auth:karyawan'])->group(function () {
 // USER ROUTES
 // ==================
 Route::middleware('auth:web')->group(function () {
+    Route::get('/mybooking', [BookingController::class, 'userBooking'])->name('user.booking');
     Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
 Route::get('/profile', [ProfileController::class, 'profileUser'])->name('profile_user');
     Route::post('/book', [BookingController::class, 'store'])->name('book.store');
     Route::get('/user/success', function () {
     return view('user.success');
     });
+    
 });
 

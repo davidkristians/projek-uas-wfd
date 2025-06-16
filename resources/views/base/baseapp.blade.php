@@ -32,7 +32,6 @@
             <a href="#ourservice" class="hover:text-gray-300">Our Service</a>
             <a href="#contactus" class="hover:text-gray-300">Contact Us</a>
             <a href="{{ route('login') }}" class="bg-gray-900 border border-white text-white px-8 py-2 rounded hover:bg-white hover:!text-black font-semibold">Login</a>
-            <img src="{{ asset('profile.png') }}" alt="User" class="inline-block ml-7 rounded-full w-9 h-9 object-cover">
         </div>
     </nav>
 

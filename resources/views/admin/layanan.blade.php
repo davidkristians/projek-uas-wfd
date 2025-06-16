@@ -126,7 +126,6 @@
         document.getElementById('modalEdit').classList.add('hidden');
     }
 </script>
-
     <!-- JS HAMBURGER Menu  -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {

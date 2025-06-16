@@ -1,8 +1,17 @@
 @extends('base.dashboard_karyawan')
 
 @section('status_pekerjaan')
-<div class="text-center justify-center items-center flex-grow flex flex-col mt-8">
-        <h1 class="mb-10 text-4xl fw-bold">Status Pekerjaan</h1>
+<div class="flex-grow flex flex-col mt-1">
+        <main class="px-6 lg:px-6 pt-4">
+            <section class="flex-1 p-8 rounded-3xl">  
+                <h1 class="mb-10 text-4xl fw-bold text-center">Status Pekerjaan</h1>
+                <p class="text-gray-300 mb-3">Your List Working</p>
+                <div class="flex flex-wrap gap-12">
+                    
+                </div>
+                
+            </section>  
+        </main>
 </div>      
 
 
