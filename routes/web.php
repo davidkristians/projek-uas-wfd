@@ -53,7 +53,10 @@ Route::middleware(['auth:admin'])->group(function () {
         return view('base.dashboard_admin');
     });
 
-    Route::get('/data', [DataController::class, 'dataForm'])->name('data');
+    Route::get('/data', [DataController::class, 'dataForm'])->name('data_form');
+    Route::get('/showdata', [DataController::class, 'index'])->name('all_data');
+
+
     Route::get('/jadwal_kerja', [JadwalController::class, 'jadwalForm'])->name('jadwal_kerja');
     
     // LAYANAN

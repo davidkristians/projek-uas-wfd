@@ -40,10 +40,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('data') }}" class="flex items-center px-3 py-2 hover:bg-teal-700 rounded-full">
+                    <a href="{{ route('data_form') }}" class="flex items-center px-3 py-2 hover:bg-teal-700 rounded-full">
                         <!-- Icon -->
                         <img src="{{ asset('data.png') }}" alt="Data" class="w-6 h-6 mr-5">
-                        Data
+                        List Data Anggota
                     </a>
                 </li>
                 <li>
