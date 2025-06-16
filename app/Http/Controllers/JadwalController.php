@@ -8,6 +8,12 @@ use App\Models\Karyawan; // <-- Tambahkan ini
 
 class JadwalController extends Controller
 {
+
+    public function jadwalFormKaryawan()
+    {
+        return view('karyawan.jadwal_kerja_karyawan');
+    }
+    
     // Method ini tetap sama, untuk menampilkan semua jadwal
     public function JadwalForm()
     {
