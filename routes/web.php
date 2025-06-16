@@ -13,6 +13,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -95,6 +96,7 @@ Route::middleware(['auth:karyawan'])->group(function () {
 // USER ROUTES
 // ==================
 Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
+Route::get('/profile', [ProfileController::class, 'profileUser'])->name('profile_user');
 
     // Tambahkan route lain khusus user biasa jika ada
 // });
