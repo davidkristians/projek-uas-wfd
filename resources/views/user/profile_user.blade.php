@@ -73,7 +73,7 @@
     <p class="text-lg text-cyan-700 font-semibold">Inside Wash</p>
     <p class="text-m text-gray-600">13.00 - 15.00</p>
   </div>
-  <p class="text-2xl font-bold text-yellow-600 text-right">4.5 <span>⭐</span></p>
+  <p class="text-2xl font-bold text-black text-right">4.5 <span>⭐</span></p>
 </div>
 
   <!-- Tanggal 22 May 2025 -->
@@ -90,7 +90,7 @@
   </p>
 </div>
   <div class="mt-3 text-right">
-  <a href="/history" class="text-sm text-blue-400 hover:text-white hover:underline transition duration-200">
+  <a href="{{ route('user.history') }}" class="text-sm text-blue-400 hover:text-white hover:underline transition duration-200">
     See More...
   </a>
 </div>
@@ -111,7 +111,7 @@
     <span class="text-lg font-medium text-blue-600 cursor-pointer">Chat Now</span>
   </div>
 <div class="mt-3 text-right">
-  <a href="/bookings" class="text-sm text-blue-400 hover:text-white hover:underline transition duration-200">
+  <a href="{{ route('user.booking') }}" class="text-sm text-blue-400 hover:text-white hover:underline transition duration-200">
     See More...
   </a>
 </div>
