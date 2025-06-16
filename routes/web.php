@@ -56,6 +56,12 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/data', [DataController::class, 'dataForm'])->name('data');
     Route::get('/jadwal_kerja', [JadwalController::class, 'jadwalForm'])->name('jadwal_kerja');
     
+    // RUTE BARU UNTUK CRUD JADWAL
+    Route::get('/jadwal/create', [JadwalController::class, 'create'])->name('jadwal.create'); // Menampilkan form tambah
+    Route::post('/jadwal', [JadwalController::class, 'store'])->name('jadwal.store'); // Menyimpan data baru
+    Route::get('/jadwal/{jadwal}/edit', [JadwalController::class, 'edit'])->name('jadwal.edit'); // Menampilkan form edit
+    Route::put('/jadwal/{jadwal}', [JadwalController::class, 'update'])->name('jadwal.update'); // Menyimpan perubahan
+    Route::delete('/jadwal/{jadwal}', [JadwalController::class, 'destroy'])->name('jadwal.destroy'); // Menghapus jadwal
     // LAYANAN
     Route::get('/layanan', [LayananController::class, 'layananForm'])->name('layanan');
     // Tambah layanan
