@@ -13,6 +13,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BookingController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -97,7 +98,11 @@ Route::middleware(['auth:karyawan'])->group(function () {
 // ==================
 // USER ROUTES
 // ==================
-Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
+Route::middleware('auth:web')->group(function () {
+    Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
+    Route::post('/book', [BookingController::class, 'store'])->name('book.store');
+    Route::get('/user/success', function () {
+    return view('user.success');
+    });
+});
 
-    // Tambahkan route lain khusus user biasa jika ada
-// });

@@ -37,6 +37,9 @@
                 <thead>
                     <tr class="bg-blue-800 text-white text-center">
                         <th class="p-3">Nama</th>
+                        <th class="p-3">Alamat</th>
+                        <th class="p-3">Telepon</th>
+                        <th class="p-3">Jenis Kelamin</th>
                         <th class="p-3">Email</th>
                     </tr>
                 </thead>
@@ -44,6 +47,9 @@
                     @forelse($data as $user)
                         <tr class="border-b hover:bg-blue-100 text-center text-black">
                             <td class="p-3">{{ $user->name }}</td>
+                            <td class="p-3">{{ $user->alamat }}</td>
+                            <td class="p-3">{{ $user->nomor_telepon }}</td>
+                            <td class="p-3">{{ $user->jenis_kelamin }}</td>
                             <td class="p-3">{{ $user->email }}</td>
                         </tr>
                     @empty

@@ -86,7 +86,7 @@
                 </div>
                 <div class="flex justify-end mt-4 gap-2">
                     <button type="button" onclick="closeEditModal()" class="bg-gray-500 text-white px-4 py-2 rounded">Batal</button>
-                    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Update</button>
+                    <button type="submit" class="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded">Update</button>
                 </div>
             </form>
         </div>
@@ -126,21 +126,6 @@
         document.getElementById('modalEdit').classList.add('hidden');
     }
 </script>
-
-
-    <!-- JS HAMBURGER Menu  -->
-
-        document.getElementById('modalEdit').classList.add('hidden');
-    }
-</script>
-
-
-    <!-- JS HAMBURGER Menu  -->
-{
-        document.getElementById('modalEdit').classList.add('hidden');
-    }
-</script>
-
 
     <!-- JS HAMBURGER Menu  -->
     <script>
