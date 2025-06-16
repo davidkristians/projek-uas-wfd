@@ -13,6 +13,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
 
 // Halaman utama
@@ -54,7 +55,10 @@ Route::middleware(['auth:admin'])->group(function () {
         return view('base.dashboard_admin');
     });
 
-    Route::get('/data', [DataController::class, 'dataForm'])->name('data');
+    Route::get('/data', [DataController::class, 'dataForm'])->name('data_form');
+    Route::get('/showdata', [DataController::class, 'index'])->name('all_data');
+
+
     Route::get('/jadwal_kerja', [JadwalController::class, 'jadwalForm'])->name('jadwal_kerja');
     
     // LAYANAN
@@ -95,8 +99,12 @@ Route::middleware(['auth:karyawan'])->group(function () {
 // ==================
 // USER ROUTES
 // ==================
-Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
+Route::middleware('auth:web')->group(function () {
+    Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
 Route::get('/profile', [ProfileController::class, 'profileUser'])->name('profile_user');
+    Route::post('/book', [BookingController::class, 'store'])->name('book.store');
+    Route::get('/user/success', function () {
+    return view('user.success');
+    });
+});
 
-    // Tambahkan route lain khusus user biasa jika ada
-// });
