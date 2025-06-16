@@ -106,11 +106,13 @@ Route::middleware(['auth:karyawan'])->group(function () {
 // USER ROUTES
 // ==================
 Route::middleware('auth:web')->group(function () {
+    Route::get('/mybooking', [BookingController::class, 'userBooking'])->name('user.booking');
     Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
 Route::get('/profile', [ProfileController::class, 'profileUser'])->name('profile_user');
     Route::post('/book', [BookingController::class, 'store'])->name('book.store');
     Route::get('/user/success', function () {
     return view('user.success');
     });
+    
 });
 

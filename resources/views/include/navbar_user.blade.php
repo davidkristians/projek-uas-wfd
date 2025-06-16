@@ -7,8 +7,8 @@
             <a href="#home" class="hover:text-gray-300">Home</a>
             <a href="#ourservice" class="hover:text-gray-300">Our Service</a>
             <a href="#contactus" class="hover:text-gray-300">Contact Us</a>
-             <p class="font-semibold">Halo User! Selamat datang</p>
-             <div class="relative inline-block text-left" id="profileMenuWrapper">
+            <p class="font-semibold">Halo {{ Auth::guard('web')->check() ? Auth::guard('web')->user()->name : 'User' }}! Selamat datang</p>
+            <div class="relative inline-block text-left" id="profileMenuWrapper">
             <!-- Profile Button -->
             <button onclick="toggleMenu()" class="flex items-center space-x-2 focus:outline-none">
                 <img src="{{ asset('profile.png') }}" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow" />
@@ -19,7 +19,7 @@
                 <a href="{{ route('profile_user') }}" class="flex gap-3 px-4 py-3 hover:bg-gray-200 hover:rounded-xl text-sm text-black">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1080 1080"><path d="M538.16 32.69c165.36 0 293.98 132.29 293.98 293.98 0 121.27-73.5 224.16-180.06 271.93 191.09 44.1 338.08 198.44 371.15 393.2 7.35 62.47-84.52 77.17-95.54 18.37-29.4-191.09-191.09-334.4-389.52-334.4s-356.45 143.32-389.52 334.4c-7.35 58.8-99.22 44.1-91.87-18.37 33.07-194.76 180.06-349.1 367.48-393.2C321.37 550.83 244.2 447.94 244.2 326.67c0-161.69 132.29-293.98 293.98-293.98Zm0 91.87c-110.24 0-198.44 91.87-198.44 202.11s88.19 198.44 198.44 198.44 202.11-88.19 202.11-198.44-91.87-202.11-202.11-202.11Z" style="fill:#000;stroke-width:0"/></svg> Profile
                 </a>
-                <a href="/booking-history" class="flex gap-3 px-4 py-3 hover:bg-gray-200 hover:rounded-xl text-sm text-black">
+                <a href="/mybooking" class="flex gap-3 px-4 py-3 hover:bg-gray-200 hover:rounded-xl text-sm text-black">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1080 1080"><defs><style>.cls-1{fill:#000;stroke-width:0}</style></defs><path d="M450.29 739.82c12.37 12.37 28.24 21.32 45.46 23.4 23.6 2.96 46.47-4.98 62.81-21.32l177.8-177.8c14.79-14.79 13.25-39.74-4.51-52.52-13.92-9.95-33.42-7.06-45.59 5.18L508.92 694.1c-1.88 1.88-5.18 1.88-7.06 0l-92.6-92.6c-6.72-6.72-15.47-9.95-24.28-9.95-9.62 0-19.3 3.97-26.16 12.04-11.9 13.92-9.62 35.31 3.43 48.22l88.16 88.16-.13-.14Z" class="cls-1"/><path d="M264.55 23.5c-18.96 0-34.43 15.47-34.43 34.43v118.29l-28.78 4.84c-83.12 14.12-143.37 85.4-143.37 169.6v533.68c0 94.89 77.27 172.16 172.16 172.16h619.76c94.89 0 172.16-77.27 172.16-172.16V350.66c0-84.19-60.25-155.48-143.37-169.6l-28.78-4.84V57.93c0-18.96-15.47-34.43-34.43-34.43s-34.43 15.47-34.43 34.43v120.51H574.45V57.93c0-18.96-15.47-34.43-34.43-34.43s-34.43 15.47-34.43 34.43v120.51H299V57.93c0-18.96-15.47-34.43-34.43-34.43Zm585.33 223.8c56.96 0 103.29 46.33 103.29 103.29v533.68c0 56.96-46.33 103.29-103.29 103.29H230.12c-56.96 0-103.29-46.33-103.29-103.29V350.6c0-56.96 46.33-103.29 103.29-103.29h619.76Z" class="cls-1"/></svg> My Bookings
                 </a>
                 <a href="/booking-history" class="flex gap-3 px-4 py-3 hover:bg-gray-200 hover:rounded-xl text-sm text-black">

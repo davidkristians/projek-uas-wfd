@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Layanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -47,5 +48,34 @@ class BookingController extends Controller
             \Log::error('Booking Error: ' . $e->getMessage());
             return response()->json(['success' => false, 'message' => 'An error occurred. Please try again.'], 500);
         }
+    }
+
+
+    public function userBooking()
+    {
+        $userId = Auth::id();
+
+        $bookings = DB::table('bookings')
+            ->where('bookings.user_id', Auth::id())
+            ->whereIn('bookings.status', ['on-going', 'unprocessed'])
+            ->leftJoin('jadwals', DB::raw('HOUR(bookings.time)'), '=', DB::raw('HOUR(jadwals.jam)'))
+            ->leftJoin('karyawans', 'jadwals.karyawan_id', '=', 'karyawans.id')
+            ->select(
+                'bookings.id',
+                'bookings.date',
+                'bookings.time',
+                'bookings.status',
+                'bookings.service_price',
+                DB::raw('MIN(karyawans.nama) as nama_karyawan') // ambil 1 nama saja
+            )
+            ->groupBy(
+                'bookings.id',
+                'bookings.date',
+                'bookings.time',
+                'bookings.status',
+                'bookings.service_price'
+            )
+            ->get();
+        return view('user.my_bookings', compact('bookings'));
     }
 }
