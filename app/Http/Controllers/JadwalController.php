@@ -5,13 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jadwal;
 use App\Models\Karyawan; // <-- Tambahkan ini
+use Illuminate\Support\Facades\Auth;
 
 class JadwalController extends Controller
 {
 
     public function jadwalFormKaryawan()
     {
-        return view('karyawan.jadwal_kerja_karyawan');
+        // 1. Dapatkan ID karyawan yang sedang login
+        $karyawanId = Auth::guard('karyawan')->id();
+
+        // 2. Ambil semua jadwal milik karyawan tersebut dari database
+        $jadwals = \App\Models\Jadwal::where('karyawan_id', $karyawanId)
+                                    ->orderBy('jam', 'asc')
+                                    ->get();
+
+        // 3. Kelompokkan jadwal berdasarkan hari untuk ditampilkan di view
+        $jadwalDikelompokkan = $jadwals->groupBy('hari');
+
+        // Daftar hari untuk memastikan urutan yang benar
+        $urutanHari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+
+        // 4. Kirim data yang sudah dikelompokkan ke view
+        return view('karyawan.jadwal_kerja_karyawan', [
+            'jadwalDikelompokkan' => $jadwalDikelompokkan,
+            'urutanHari' => $urutanHari
+        ]);
     }
     
     // Method ini tetap sama, untuk menampilkan semua jadwal

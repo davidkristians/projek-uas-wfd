@@ -2,80 +2,120 @@
 
 namespace App\Http\Controllers;
 
+// Import semua kelas yang kita butuhkan
 use App\Models\Booking;
 use App\Models\Layanan;
+use App\Models\Jadwal;
+use App\Models\Karyawan; // <-- Tambahkan ini untuk relasi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon; 
+use App\Models\Notification;
 
 class BookingController extends Controller
 {
+    /**
+     * Menyimpan booking baru dan menugaskan karyawan secara otomatis.
+     */
     public function store(Request $request)
     {
-        try {
-            if (!Auth::guard('web')->check()) {
-                return response()->json(['success' => false, 'message' => 'Please log in to book a service.'], 401);
-            }
+        // 1. Validasi input dari user
+        $validatedData = $request->validate([
+            'service_id' => 'required|exists:layanans,id',
+            'location' => 'required|string|max:255',
+            'date' => 'required|date_format:Y-m-d',
+            'time' => 'required|date_format:H:i',
+            'payment_method' => 'required|in:cod,e-money,debit,bank-transfer',
+        ]);
 
-            $validatedData = $request->validate([
-                'service_id' => 'required|exists:layanans,id',
-                'location' => 'required|string|max:255',
-                'date' => 'required|date',
-                'time' => 'required',
-                'payment_method' => 'required|in:cod,e-money,debit,bank-transfer'
-            ]);
+        // 2. Dapatkan data pendukung
+        $user = Auth::guard('web')->user();
+        $layanan = Layanan::findOrFail($validatedData['service_id']);
+        $timeWithSeconds = $validatedData['time'] . ':00'; // Tambah detik agar cocok dengan format DB
 
-            $user = Auth::guard('web')->user();
-            $layanan = Layanan::findOrFail($validatedData['service_id']);
+        // --- LOGIKA BARU UNTUK PENUGASAN KARYAWAN OTOMATIS ---
+        $dayOfWeek = Carbon::parse($validatedData['date'])->format('l');
+        $dayMap = ['Monday' => 'Senin', 'Tuesday' => 'Selasa', 'Wednesday' => 'Rabu', 'Thursday' => 'Kamis', 'Friday' => 'Jumat', 'Saturday' => 'Sabtu', 'Sunday' => 'Minggu'];
+        $hariIndonesia = $dayMap[$dayOfWeek];
 
-            $booking = Booking::create([
-                'user_id' => $user->id,
-                'service_id' => $validatedData['service_id'],
-                'location' => $validatedData['location'],
-                'date' => $validatedData['date'],
-                'time' => $validatedData['time'],
-                'payment_method' => $validatedData['payment_method'],
-                'status' => 'unprocessed',
-                'user_name' => $user->name, // Isi nama user
-                'service_name' => $layanan->nama, // Isi nama layanan
-                'service_price' => $layanan->harga // Isi harga layanan
-            ]);
+        $karyawanOnDutyIds = Jadwal::where('hari', $hariIndonesia)->where('jam', $timeWithSeconds)->pluck('karyawan_id')->toArray();
+        $karyawanBookedIds = Booking::where('date', $validatedData['date'])->where('time', '>=', $timeWithSeconds)->pluck('karyawan_id')->toArray();
+        $availableKaryawanIds = array_diff($karyawanOnDutyIds, $karyawanBookedIds);
 
-            return response()->json(['success' => true, 'message' => 'Booking created successfully!']);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json(['success' => false, 'message' => 'Validation failed: ' . implode(', ', $e->errors())], 422);
-        } catch (\Exception $e) {
-            \Log::error('Booking Error: ' . $e->getMessage());
-            return response()->json(['success' => false, 'message' => 'An error occurred. Please try again.'], 500);
+        if (empty($availableKaryawanIds)) {
+            return response()->json(['success' => false, 'message' => 'Maaf, slot waktu ini baru saja terisi. Silakan pilih slot lain.'], 409);
         }
+
+        $assignedKaryawanId = $availableKaryawanIds[array_rand($availableKaryawanIds)];
+
+        Booking::create([
+            'user_id' => $user->id,
+            'service_id' => $validatedData['service_id'],
+            'karyawan_id' => $assignedKaryawanId,
+            'location' => $validatedData['location'],
+            'date' => $validatedData['date'],
+            'time' => $timeWithSeconds,
+            'payment_method' => $validatedData['payment_method'],
+            'status' => 'unprocessed',
+            'user_name' => $user->name,
+            'service_name' => $layanan->nama,
+            'service_price' => $layanan->harga
+        ]);
+
+        Notification::create([
+            'karyawan_id' => $assignedKaryawanId,
+            'message' => "Anda mendapatkan tugas baru (Otomatis): {$layanan->nama} untuk customer {$user->name}.",
+            'link' => route('status_pekerjaan')
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Booking created successfully!']);
     }
 
+    /**
+     * API untuk mengambil slot waktu yang tersedia berdasarkan tanggal.
+     */
+    public function getAvailableSlots(Request $request)
+    {
+        $request->validate(['date' => 'required|date_format:Y-m-d']);
+        $date = $request->input('date');
 
+        $dayOfWeek = Carbon::parse($date)->format('l');
+        $dayMap = ['Monday' => 'Senin', 'Tuesday' => 'Selasa', 'Wednesday' => 'Rabu', 'Thursday' => 'Kamis', 'Friday' => 'Jumat', 'Saturday' => 'Sabtu', 'Sunday' => 'Minggu'];
+        $hari = $dayMap[$dayOfWeek];
+
+        $jadwalSlots = Jadwal::where('hari', $hari)->get();
+        $existingBookings = Booking::where('date', $date)->get();
+        $availableSlots = [];
+        $slotsOnDuty = $jadwalSlots->groupBy('jam');
+
+        foreach ($slotsOnDuty as $jam => $jadwals) {
+            $totalKaryawanOnDuty = $jadwals->count();
+            $bookedCount = $existingBookings->where('time', $jam)->count();
+
+            if ($totalKaryawanOnDuty > $bookedCount) {
+                $formattedJam = Carbon::parse($jam)->format('H:i');
+                $availableSlots[] = $formattedJam;
+            }
+        }
+        sort($availableSlots);
+        return response()->json($availableSlots);
+    }
+
+    /**
+     * Menampilkan halaman "My Booking" untuk user.
+     */
     public function userBooking()
     {
-        $userId = Auth::id();
-
-        $bookings = DB::table('bookings')
-            ->where('bookings.user_id', Auth::id())
-            ->whereIn('bookings.status', ['on-going', 'unprocessed'])
-            ->leftJoin('jadwals', DB::raw('HOUR(bookings.time)'), '=', DB::raw('HOUR(jadwals.jam)'))
-            ->leftJoin('karyawans', 'jadwals.karyawan_id', '=', 'karyawans.id')
-            ->select(
-                'bookings.id',
-                'bookings.date',
-                'bookings.time',
-                'bookings.status',
-                'bookings.service_price',
-                DB::raw('MIN(karyawans.nama) as nama_karyawan') // ambil 1 nama saja
-            )
-            ->groupBy(
-                'bookings.id',
-                'bookings.date',
-                'bookings.time',
-                'bookings.status',
-                'bookings.service_price'
-            )
+        $bookings = Booking::where('user_id', Auth::id())
+            ->whereIn('status', ['on-going', 'unprocessed'])
+            ->with('karyawan')
+            ->orderBy('date', 'asc')
             ->get();
+
+        $bookings->each(function ($booking) {
+            $booking->nama_karyawan = $booking->karyawan->nama ?? 'Belum Dijadwalkan';
+        });
+
         return view('user.my_bookings', compact('bookings'));
     }
 }
