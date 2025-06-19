@@ -15,6 +15,7 @@ use App\Http\Controllers\DataController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RiwayatBookingUserController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -106,13 +107,26 @@ Route::middleware(['auth:karyawan'])->group(function () {
 // USER ROUTES
 // ==================
 Route::middleware('auth:web')->group(function () {
+    Route::get('/historybookings', [RiwayatBookingUserController::class, 'historyBooking'])->name('user.history');
+    Route::get('/historybookings', [RiwayatBookingUserController::class, 'history'])->name('user.history');
+    // USER RATING
+    Route::post('/bookings/{id}/rate', [RiwayatBookingUserController::class, 'rateBooking'])->name('bookings.rate');
+
     Route::get('/mybooking', [BookingController::class, 'userBooking'])->name('user.booking');
     Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
-Route::get('/profile', [ProfileController::class, 'profileUser'])->name('profile_user');
+    Route::get('/profile', [ProfileController::class, 'profileUser'])->name('profile_user');
     Route::post('/book', [BookingController::class, 'store'])->name('book.store');
     Route::get('/user/success', function () {
     return view('user.success');
     });
+
+    // Untuk Edit User
+    // KALAU MAU PAKE MODAL FORM
+    // Route::get('/profile_user', [ProfileController::class, 'index'])->name('profile_user');
+
+    Route::get('/profile_user/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile_user/update', [ProfileController::class, 'update'])->name('profile.update');
+
     
 });
 

@@ -1,9 +1,6 @@
 @extends('base.dashboard_user')
 
 @section('my_bookings')
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
-@include('include.navbar_user')
 <main class="mt-24 px-6 lg:px-6 pt-4 bg-gradient-to-br from-[#1B2845] to-[#003049] justify-center">
     <section class="flex-1 bg-gradient-to-tl from-[#000000]/30 to-[#ffffff]/30 backdrop-blur-md p-8 rounded-3xl">  
         <h1 class="text-white text-center mb-14 text-4xl font-bold">My Booking</h1>
@@ -35,8 +32,4 @@
         </div>
     </section>  
 </main>
-
-
-
-
 @endsection

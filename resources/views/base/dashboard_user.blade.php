@@ -226,12 +226,26 @@
         }
     }
 
-    document.addEventListener("click", function (event) {
-        const menu = document.getElementById("dropdownMenu");
-        const wrapper = document.getElementById("profileMenuWrapper");
-        if (!wrapper.contains(event.target)) {
-            menu.classList.add("hidden");
-        }
-    });
+  document.addEventListener("click", function (e) {
+    const wrapper = document.getElementById("profileMenuWrapper");
+    const menu = document.getElementById("dropdownMenu");
+
+    if (!wrapper.contains(e.target)) {
+      if (!menu.classList.contains("invisible")) {
+        menu.classList.add("opacity-0");
+        setTimeout(() => menu.classList.add("invisible"), 300);
+      }
+    }
+  });
+
+  // SCRIPT BUAT POP UP MODAL FORM
+    // function openModal() {
+    //     document.getElementById('editModal').classList.remove('hidden');
+    // }
+
+    // function closeModal() {
+    //     document.getElementById('editModal').classList.add('hidden');
+    // }
+
 </script>
 </html>
