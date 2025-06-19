@@ -133,25 +133,54 @@
 
 
 <!-- Bookings -->
-<div class="bg-gradient-to-tl from-[#000000]/30 to-[#ffffff]/30 backdrop-blur-md p-8 rounded-2xl shadow-md">
-  <h2 class="text-3xl text-white mb-4">Bookings</h2>
-
-  <!-- Tanggal -->
-  <p class="text-lg text-gray-400 mb-1">29 May 2025</p>
-
-  <div class="bg-white text-black rounded-xl px-3 py-2 flex justify-between items-center">
-    <div>
-      <p class="text-lg text-cyan-700 font-semibold">Premium Wash</p>
-      <p class="text-m text-gray-600">13.00 - 15.00</p>
+{{-- <div class="bg-gradient-to-tl from-[#000000]/30 to-[#ffffff]/30 backdrop-blur-md p-8 rounded-2xl shadow-md mt-12">
+    <h2 class="text-3xl text-white mb-6 text-center font-bold">Upcoming Bookings</h2>
+    <div class="flex flex-wrap gap-6 justify-center">
+        @forelse ($bookings as $booking)
+            <div class="bg-gradient-to-tl from-[#000000]/50 to-[#ffffff]/20 backdrop-blur-md text-white rounded-lg p-6 w-72 shadow-lg text-center transform hover:scale-105 transition duration-300">
+                <div class="text-5xl mb-4">📅</div>
+                <p class="text-gray-300 mb-2">Tanggal: {{ \Carbon\Carbon::parse($booking->date)->format('d M Y') }}</p>
+                <p class="text-gray-300 mb-2">Waktu: {{ \Carbon\Carbon::parse($booking->time)->format('H:i') }}</p>
+                <p class="text-green-400 font-bold text-xl mb-2">Rp {{ number_format($booking->service_price, 0, ',', '.') }}</p>
+                <p class="text-sm text-gray-400 mb-2">Status: {{ $booking->status }}</p>
+                <p class="text-sm text-gray-300">Karyawan: 
+                    <span class="font-semibold">
+                        {{ $booking->nama_karyawan ?? 'Belum dijadwalkan' }}
+                    </span>
+                </p>
+            </div>
+        @empty
+            <p class="text-center text-gray-300">Belum ada booking yang akan datang...</p>
+        @endforelse
     </div>
-    <span class="text-lg font-medium text-blue-600 cursor-pointer">Chat Now</span>
-  </div>
-<div class="mt-3 text-right">
-  <a href="{{ route('user.booking') }}" class="text-sm text-blue-400 hover:text-white hover:underline transition duration-200">
-    See More...
-  </a>
+</div> --}}
+
+<div class="bg-gradient-to-tl from-[#000000]/30 to-[#ffffff]/30 backdrop-blur-md p-8 rounded-2xl shadow-md mt-12">
+    <h2 class="text-3xl text-white mb-4">Bookings</h2>
+    @forelse ($bookings as $booking)
+        <p class="text-lg text-gray-400 mb-1">
+            {{ \Carbon\Carbon::parse($booking->date)->format('d M Y') }}
+        </p>
+        <div class="bg-white text-black rounded-3xl px-4 py-3 flex justify-between items-center mb-3 ">
+            <div>
+                <p class="text-xl font-bold text-cyan-700">{{ $booking->service_name }}</p>
+                <p class="text-sm text-gray-600">
+                    {{ \Carbon\Carbon::parse($booking->time)->format('H:i') }} 
+                </p>
+            </div>
+            <span class="text-lg font-medium text-blue-600 capitalize">{{ $booking->status }}</span>
+        </div>
+    @empty
+        <p class="text-gray-300 text-center">Belum ada booking yang akan datang.</p>
+    @endforelse
+
+    @if ($bookings->count())
+        <div class="text-right mt-2">
+            <a href="{{ route('user.booking') }}" class="text-sm text-blue-300 hover:text-white hover:underline">See More...</a>
+        </div>
+    @endif
 </div>
-</div>
+
 
     </section>
   </main>

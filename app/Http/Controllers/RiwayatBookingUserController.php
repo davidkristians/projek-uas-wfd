@@ -16,12 +16,14 @@ class RiwayatBookingUserController extends Controller
     public function history()
     {
         $history = Booking::where('user_id', \Auth::user()->id)
+            ->where('status', 'done')
             ->orderBy('created_at', 'desc')
             ->get()
             ->groupBy(function($item) {
                 return \Carbon\Carbon::parse($item->created_at)->format('d F Y');
         });
         return view('user.history', compact('history'));
+
     }
 
     public function rateBooking(Request $request, $id)
@@ -43,6 +45,7 @@ class RiwayatBookingUserController extends Controller
     $user = auth()->user();
 
     $history = Booking::where('user_id', $user->id)
+        ->where('status', 'done')
         ->orderBy('created_at', 'desc')
         ->take(2)
         ->get()
@@ -50,7 +53,13 @@ class RiwayatBookingUserController extends Controller
             return \Carbon\Carbon::parse($item->created_at)->format('d F Y');
         });
 
-    return view('user.profile_user', compact('user', 'history'));
+        $bookings = Booking::where('user_id', $user->id)
+        ->where('status', '!=', 'done') // hanya booking yang belum selesai
+        ->where('time', '>', now())
+        ->orderBy('time')
+        ->get();
+
+    return view('user.profile_user', compact('user', 'history', 'bookings'));
 }
 
 
