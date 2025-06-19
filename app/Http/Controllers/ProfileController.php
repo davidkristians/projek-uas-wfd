@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function profileUser()
+    public function showProfile()
     {
-        return view('user.profile_user');
+        $user = Auth::user();
+        return view('user.profile_user', compact('user'));
     }
 
     // KALO MAU PAKE MODAL FORM KATANYA PAKE INI
@@ -31,21 +32,21 @@ class ProfileController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'gender' => 'required|string',
-            'nik' => 'required|string|max:20',
+            'nomor_telepon' => 'required|string|max:20',
+            'jenis_kelamin' => 'required|string',
+            'alamat' => 'required|string|max:255',
             'email' => 'required|email|max:255',
         ]);
 
         $user->update([
             'name' => $request->name,
-            'phone' => $request->phone,
-            'gender' => $request->gender,
-            'nik' => $request->nik,
+            'nomor_telepon' => $request->nomor_telepon,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
             'email' => $request->email,
         ]);
 
         return redirect()->route('profile_user')->with('success', 'Profil berhasil diperbarui!');
-}
+    }
 
 }

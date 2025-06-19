@@ -114,7 +114,15 @@ Route::middleware('auth:web')->group(function () {
 
     Route::get('/mybooking', [BookingController::class, 'userBooking'])->name('user.booking');
     Route::get('/base/dashboard_user', [DashboardController::class, 'dashboardUser'])->name('dashboard.user');
-    Route::get('/profile', [ProfileController::class, 'profileUser'])->name('profile_user');
+    
+    // HALAMAN PROFILE
+    Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile_user')->middleware('auth');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+    Route::post('/bookings/{id}/rate', [RiwayatBookingUserController::class, 'rateBooking'])->name('bookings.rate');
+    Route::get('/profile', [RiwayatBookingUserController::class, 'showProfile'])->name('profile_user');
+
+    // BUAT BOOKING
     Route::post('/book', [BookingController::class, 'store'])->name('book.store');
     Route::get('/user/success', function () {
     return view('user.success');
