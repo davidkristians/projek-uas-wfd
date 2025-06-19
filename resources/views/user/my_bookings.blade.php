@@ -9,8 +9,8 @@
             @forelse ($bookings as $booking)
                 <div class="bg-gradient-to-tl from-[#000000]/50 to-[#ffffff]/20 backdrop-blur-md text-white rounded-lg p-6 w-72 shadow-lg text-center transform hover:scale-105 transition duration-300">
                     <div class="text-5xl mb-4">📅</div>
-                    <p class="text-gray-300 mb-2">Tanggal: {{ $booking->date }}</p>
-                    <p class="text-gray-300 mb-2">Waktu: {{ $booking->time }}</p>
+                    <p class="text-gray-300 mb-2">Tanggal: {{ \Carbon\Carbon::parse($booking->date)->format('d M Y') }}</p>
+                    <p class="text-gray-300 mb-2">Waktu: {{ \Carbon\Carbon::parse($booking->time)->format('H:i') }}</p>
                     <p class="text-green-400 font-bold text-xl mb-2">$ {{ number_format($booking->service_price, 0, ',', '.') }}</p>
                     <p class="text-sm text-gray-400 mb-2">Status: {{ $booking->status }}</p>
                     <p class="text-sm text-gray-300">Karyawan: 
