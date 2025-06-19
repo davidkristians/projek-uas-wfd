@@ -19,15 +19,35 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'name' => 'required|string|min:5|max:40',
+            'email' => [
+                'required',
+                'email',
+                'regex:/^[\w\.\-]+@([\w\-]+\.)+com$/',
+                'unique:users,email',
+            ],
             'password' => 'required|min:6',
+            'nomor_telepon' => [
+                'required',
+                'regex:/^(\\+62|08)[0-9]{8,13}$/'
+            ],
+            'alamat' => [
+                'required',
+                'string',
+                'min:6',
+                'max:50',
+                'regex:/^(?=.*[a-zA-Z])(?=.*\d)(?=.{6,80}$)[a-zA-Z0-9\s.,\-\/#]+$/'
+            ],
+            'jenis_kelamin' => 'required',
         ]);
 
         User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
+            'nomor_telepon' => $validatedData['nomor_telepon'],
+            'alamat' => $validatedData['alamat'],
+            'jenis_kelamin' => $validatedData['jenis_kelamin'],
         ]);
 
         return redirect('/login')->with('success', 'Registration Successful!');
@@ -44,12 +64,26 @@ class RegisterController extends Controller
     public function simpanRegisterKaryawan(Request $request)
     {
         $request->validate([
-            'nama_lengkap' => 'required|string|max:255',
-            'alamat_rumah' => 'required|string|max:255',
-            'nomor_telepon' => 'required|string|max:20',
+            'nama_lengkap' => 'required|string|min:5|max:40',
+            'alamat_rumah' => [
+                'required',
+                'string',
+                'min:6',
+                'max:50',
+                'regex:/^(?=.*[a-zA-Z])(?=.*\d)(?=.{6,80}$)[a-zA-Z0-9\s.,\-\/#]+$/'
+            ],
+            'nomor_telepon' => [
+                'required',
+                'regex:/^(\\+62|08)[0-9]{8,13}$/'
+            ],
             'jenis_kelamin' => 'required|string|max:10',
             'tanggal_mulai_bekerja' => 'required|date',
-            'email' => 'required|email|unique:karyawans,email',
+            'email' => [
+                'required',
+                'email',
+                'regex:/^[\w\.\-]+@([\w\-]+\.)+com$/',
+                'unique:karyawans,email',
+            ],
             'password' => 'required|string|min:6',
         ]);
 

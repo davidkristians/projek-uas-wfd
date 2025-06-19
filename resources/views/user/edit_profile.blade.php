@@ -15,21 +15,21 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Nomor Telepon</label>
-            <input type="text" name="phone" value="{{ old('phone', $user->phone) }}" class="w-full px-4 py-2 border rounded-md">
+            <input type="text" name="nomor_telepon" value="{{ old('nomor_telepon', $user->nomor_telepon) }}" class="w-full px-4 py-2 border rounded-md">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Jenis Kelamin</label>
-            <select name="gender" class="w-full px-4 py-2 border rounded-md">
-                <option value="Laki-laki" {{ $user->gender == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                <option value="Perempuan" {{ $user->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-                <option value="Waria" {{ $user->gender == 'Waria' ? 'selected' : '' }}>Waria</option>
+            <select name="jenis_kelamin" class="w-full px-4 py-2 border rounded-md">
+                <option value="Laki-laki" {{ $user->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                <option value="Perempuan" {{ $user->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                <option value="Waria" {{ $user->jenis_kelamin == 'Waria' ? 'selected' : '' }}>Waria</option>
             </select>
         </div>
 
         <div class="mb-4">
-            <label class="block text-gray-700">NIK (KTP)</label>
-            <input type="text" name="nik" value="{{ old('nik', $user->nik) }}" class="w-full px-4 py-2 border rounded-md">
+            <label class="block text-gray-700">Alamat Rumah</label>
+            <input type="text" name="alamat" value="{{ old('alamat', $user->alamat) }}" class="w-full px-4 py-2 border rounded-md">
         </div>
 
         <div class="mb-4">

@@ -3,10 +3,8 @@
             <img src="{{ asset('vroom_icon_web.jpg') }}" alt="VroomWash Logo" class="mr-3 rounded-full w-12 h-12 object-cover">
             <span class="text-xl font-bold">VroomWash</span>
         </div>
-        <div class="flex items-center space-x-8">
+        <div class="flex items-center space-x-10">
             <a href="{{ route('dashboard.user') }}" class="hover:text-gray-300">Home</a>
-            <a href="#ourservice" class="hover:text-gray-300">Our Service</a>
-            <a href="#contactus" class="hover:text-gray-300">Contact Us</a>
             <p class="font-semibold">Halo {{ Auth::guard('web')->check() ? Auth::guard('web')->user()->name : 'User' }}! Selamat datang</p>
             <div class="relative inline-block text-left" id="profileMenuWrapper">
             <!-- Profile Button -->

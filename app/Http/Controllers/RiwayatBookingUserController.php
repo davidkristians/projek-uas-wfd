@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking;
+use Carbon\Carbon;
 
 class RiwayatBookingUserController extends Controller
 {
@@ -35,5 +36,23 @@ class RiwayatBookingUserController extends Controller
 
         return redirect()->back()->with('success', 'Terima kasih atas ratingnya!');
     }
+    
+    // UNTUK DI BAGIAN HALAMAN PROFILE 
+    public function showProfile()
+{
+    $user = auth()->user();
+
+    $history = Booking::where('user_id', $user->id)
+        ->orderBy('created_at', 'desc')
+        ->take(2)
+        ->get()
+        ->groupBy(function ($item) {
+            return \Carbon\Carbon::parse($item->created_at)->format('d F Y');
+        });
+
+    return view('user.profile_user', compact('user', 'history'));
+}
+
+
 
 }
