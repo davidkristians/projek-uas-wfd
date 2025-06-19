@@ -16,6 +16,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RiwayatBookingUserController;
+use App\Http\Controllers\Admin\BookingManagementController;
+
 
 // Halaman utama
 Route::get('/', function () {
@@ -84,9 +86,13 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/tambahkaryawan', [RegisterController::class, 'registerKaryawan'])->name('tambah_karyawan');
     Route::post('/sukses_tambah_karyawan', [RegisterController::class, 'simpanRegisterKaryawan'])->name('simpan_karyawan');
     Route::get('/showkaryawan', [RegisterController::class, 'showKaryawan'])->name('show_karyawan');
-    //    
+    //   
     Route::get('/pembayaran', [PembayaranController::class, 'pembayaranForm'])->name('pembayaran');
     Route::get('/laporan', [LaporanController::class, 'laporanForm'])->name('laporan');
+
+    Route::get('/admin/bookings', [BookingManagementController::class, 'index'])->name('admin.bookings.index');
+    Route::put('/admin/bookings/{booking}/assign', [BookingManagementController::class, 'assign'])->name('admin.bookings.assign');
+
 });
 
 // ==================
@@ -101,7 +107,11 @@ Route::middleware(['auth:karyawan'])->group(function () {
     Route::get('/riwayat_karyawan', [RiwayatController::class, 'riwayatKaryawan'])->name('riwayat_pekerjaan_karyawan');
     Route::get('/status_pekerjaan', [StatusController::class, 'statusPekerjaan'])->name('status_pekerjaan');
     Route::get('/notifikasi', [NotifikasiController::class, 'notifikasiForm'])->name('notifikasi');
+    Route::patch('/karyawan/bookings/{booking}/update-status', [StatusController::class, 'updateStatus'])->name('karyawan.booking.updateStatus');
 });
+
+//API UNTUK CEK SLOT JADWAL TERSEDIA
+Route::get('/api/available-slots', [BookingController::class, 'getAvailableSlots'])->name('api.available_slots');
 
 // ==================
 // USER ROUTES

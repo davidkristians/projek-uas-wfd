@@ -7,12 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
-     */
+    * Run the migrations.
+    */
     public function up(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->float('rating')->nullable()->after('status'); 
+            // Kolom ini bisa NULL karena booking awalnya mungkin belum ditugaskan.
+            // Kolom ini akan diletakkan setelah kolom 'service_id'.
+            $table->foreignId('karyawan_id')
+                ->nullable()
+                ->after('service_id')
+                ->constrained('karyawans')
+                ->onDelete('set null'); // Jika karyawan dihapus, tugasnya menjadi null (tidak ikut terhapus)
         });
     }
 
@@ -22,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->dropColumn('rating');
+            //
         });
     }
 };
