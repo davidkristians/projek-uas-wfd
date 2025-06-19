@@ -84,7 +84,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/tambahkaryawan', [RegisterController::class, 'registerKaryawan'])->name('tambah_karyawan');
     Route::post('/sukses_tambah_karyawan', [RegisterController::class, 'simpanRegisterKaryawan'])->name('simpan_karyawan');
     Route::get('/showkaryawan', [RegisterController::class, 'showKaryawan'])->name('show_karyawan');
-    //    
+    //   
     Route::get('/pembayaran', [PembayaranController::class, 'pembayaranForm'])->name('pembayaran');
     Route::get('/laporan', [LaporanController::class, 'laporanForm'])->name('laporan');
 });
