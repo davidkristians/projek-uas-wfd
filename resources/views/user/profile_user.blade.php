@@ -7,41 +7,44 @@
       <div class="flex items-center gap-4 mb-6">
         <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile" class="w-30 h-30 rounded-full object-cover border-4 border-white" />
         <h1 class="text-6xl text-white font-bold">Wempy Turki</h1>
+        <div class="mt-4">
+          <a href="{{ route('profile.edit') }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Edit Profil</a>
+        </div>
+        <!-- Tombol untuk membuka modal -->
+        <!-- <button onclick="openModal()" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+          Edit Profil
+        </button> -->
+
       </div>
       <div class="mt-12 space-y-8 text-white">
         <div>
           <p class="text-m text-gray-300">Nama Lengkap</p>
           <div class="flex items-center justify-between">
             <p class="text-xl">Wempy Turki</p>
-            <button>✎</button>
           </div>
         </div>
         <div>
           <p class="text-m text-gray-300">Nomor Telepon</p>
           <div class="flex items-center justify-between">
             <p class="text-xl">081234567890</p>
-            <button>✎</button>
           </div>
         </div>
         <div>
           <p class="text-m text-gray-300">Jenis Kelamin</p>
           <div class="flex items-center justify-between">
             <p class="text-xl">Waria</p>
-            <button>✎</button>
           </div>
         </div>
         <div>
           <p class="text-m text-gray-300">NIK (KTP asli)</p>
           <div class="flex items-center justify-between">
             <p class="text-xl">2020305987250001</p>
-            <button>✎</button>
           </div>
         </div>
         <div>
           <p class="text-m text-gray-300">Email</p>
           <div class="flex items-center justify-between">
             <p class="text-xl">Sa_Palu2018@gmail.com</p>
-            <button>✎</button>
           </div>
         </div>
       </div>
@@ -119,4 +122,6 @@
 
     </section>
   </main>
+
+
 @endsection
